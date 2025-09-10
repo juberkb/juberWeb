@@ -1,0 +1,239 @@
+/* HireMeServicePage.css */
+.hireMeContainer, 
+.hireMeSubContainer2, 
+.cards-section, 
+.cards-scroll-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+.hireMeServicePage {
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  min-height: 100vh;
+  color: white;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hireMeHeading {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background-clip:'text';
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.hireMeHeading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+  border-radius: 2px;
+}
+
+.hireMeContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hireMeSubContainer1 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hireMeTextContainer {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gradient-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background-clip:'text';
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.gradient-text2 {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.resume-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hireMeSubContainer2 {
+  flex: 2;
+}
+
+.cards-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.textColumn {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.text-column1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #ffd166, #06d6a0);
+  background-clip:'text';
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-column2 {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navigation-hints {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-hint {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cards-scroll-container {
+  overflow-x: auto;
+  padding: 1rem 0;
+  cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.cards-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cards-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cards-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.cards-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.cards-scroll-container:active {
+  cursor: grabbing;
+}
+
+.cards-row {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hireMeContainer {
+    flex-direction: column;
+  }
+  
+  .hireMeSubContainer1, 
+  .hireMeSubContainer2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hireMeHeading {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+  }
+  
+  .gradient-text {
+    font-size: 2rem;
+  }
+  
+  .gradient-text2 {
+    font-size: 1rem;
+  }
+  
+  .textColumn {
+    padding: 1rem;
+  }
+  
+  .text-column1 {
+    font-size: 1.5rem;
+  }
+  
+  .text-column2 {
+    font-size: 1rem;
+  }
+  
+  .navigation-hints {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .cards-row {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hireMeHeading {
+    font-size: 2rem;
+  }
+  
+  .gradient-text {
+    font-size: 1.7rem;
+  }
+  
+  .hireMeTextContainer {
+    padding: 1.5rem;
+  }
+}

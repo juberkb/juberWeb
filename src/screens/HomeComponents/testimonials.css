@@ -1,0 +1,130 @@
+.testiContainer{
+   /* background:rgb(11, 44, 57); */
+  margin-top: 40px;
+   margin-bottom: 120px;
+   border-radius: 25px;
+    color: gray;
+    /* padding: 70px; */
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 15px;
+ padding-bottom: 15px;
+  box-shadow: 20px 20px 60px #00000041,inset -20px -20px 60px rgba(255, 255, 255, 0.24);
+}
+.testiMainHeading{
+padding: 20px;
+margin-left: -70px;
+margin-right: -70px;
+margin-top: -25px;
+   border-radius: 25px 25px 25px 25px;
+   /* box-shadow: 0px 8px 12px 5px gray; */
+}
+.testiHeading{
+    font-size: 40px;
+  border-bottom: 1px solid grey;
+    font-weight: bolder;
+  background: rgb(60,179,113);
+
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.testiSubHeading{
+/* word-spacing: 5px; */
+
+  font-size: 20px;
+  margin-left: 20px;
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
+}
+.testiContact {
+    margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+margin-top: 25px;
+ >.testiContactText {
+  grid-column: 1; /* Place this element in the first column */
+    margin-left: 20px;
+  line-height: 20px;
+}
+
+/* >.testiContactButton {
+  grid-column: 2; 
+  margin-left: 270px;
+  margin-top: 10px;
+} */
+}
+.card-container {
+  display: flex;
+  overflow: hidden; /* Hide both horizontal and vertical scrollbars */
+  padding: 20px;
+  gap: 40px;
+  border: none;
+}
+
+
+    @media (max-width: 768px) {
+      .testiContainer{
+     background-color:rgb(12, 12, 12) ;
+    /* margin-top: -2px;
+    margin-left: -11px;
+    margin-right: -11px;
+    margin-bottom: -150px; */
+    border-radius: 0;
+    color: white;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+      box-shadow: none;
+
+}
+.testiMainHeading{
+padding: 10px;
+margin-left: -60px;
+margin-right: -60px;
+margin-top: -5rem;
+ 
+   border-radius: 25px 25px 25px 25px;
+ 
+}
+
+.testiSubHeading{
+  display: flex;
+/* word-spacing: 5px; */
+
+  font-size: 20px;
+  margin-left: -40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.testiContact {
+    margin-bottom: -6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+margin-top: .5rem;
+display: flex;
+flex-direction: row;
+ >.testiContactText {
+     margin-left: -3rem;
+     margin-right: -4rem;
+  
+  /* line-height: 20px;
+  text-align: justify; */
+  /* width: 100%; */
+}
+}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

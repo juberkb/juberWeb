@@ -1,0 +1,121 @@
+
+.myServices{
+   /* background-image: linear-gradient(to right, #090908, #9798ab); */
+    /* background:rgb(11, 44, 57); */
+    margin-top: -4rem;
+   padding: 30px;
+   color: beige;
+}
+.mainHeader span{
+ color: #3cb371;
+}
+.serviceHeader{
+  margin-top: 5rem;
+  margin-bottom: 0px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .mainHeader{
+    padding-left: 40px;
+    font-size: 40px;
+  }
+  .mainText{
+    margin-top: 10px;
+    color: whitesmoke;
+    font-size: 15px;
+  }
+}
+.myServiceContainer{
+    margin-top: 10px;
+     display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: justify;
+  column-gap: 50px;
+}
+.FED,.MSD,.RND{
+  border-bottom: 1px solid black;
+ text-align: center;
+
+}
+.imgDEV{
+ padding-top: 20px;
+    display: block; /* Makes the image a block element */
+    margin: 0 auto;
+    height: 200px;
+    width: 300px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+     margin-top: -1rem;
+}
+.textContainer{
+   margin-top: -1.8rem;
+}
+    @media (max-width: 768px) {
+.myServices{
+   background-image: linear-gradient(to right, #090908, #9798ab);
+   padding:0%;
+   color: beige;
+    margin-top: -60px;
+   margin-bottom: 50px;
+
+}
+.mainHeader{
+ 
+margin-right: 40px;
+>.mainHeader span{
+    color: orangered;
+}
+}
+
+.serviceHeader{
+  margin-top: -10px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .mainHeader{
+        margin-top: 25px;
+    display: flex;
+    padding-left: 20px;
+    font-size: 30px;
+  }
+  .mainText{
+    margin-top: 10px;
+    color: rgb(14, 12, 12);
+    font-size: 15px;
+  }
+}
+.myServiceContainer{
+    margin-top: 10px;
+     display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: justify;
+ row-gap: 0px;
+
+}
+.FED,.MSD,.RND{
+  border-bottom: .5px solid black;
+ text-align: justify;
+ margin-left: 20px;
+ margin-top: 20px;
+}
+.textContainer{
+text-align: justify;
+  margin-right: 25px;
+  /* list-style: circle; */
+}
+.imgDEV{
+ padding-top: 10px;
+    display: block; /* Makes the image a block element */
+    margin: 0 auto;
+    height: 200px;
+    width: 300px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+}
+
+  }

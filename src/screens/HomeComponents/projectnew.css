@@ -1,0 +1,152 @@
+.hellojuber{
+    color:aqua;
+}
+.newprojectImg{
+    padding: 5rem;
+    height: 40rem;
+    width: 86rem;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.main-image-container {
+  position: relative;
+  width: 70%;
+ 
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+    opacity: 0.8;
+ border-radius: 5%;
+}
+
+.overlay-text {
+    font-size: 1.7rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24.5rem;
+  margin-left: 14rem;
+  font-weight: bold;
+     flex-wrap: wrap;
+ text-transform: capitalize;
+background-color: rgb(91, 208, 134);
+ border-radius: 10px;
+}
+.projectbtn a{
+  text-transform: capitalize;
+   text-decoration: none;
+  font-size: 1.2rem;
+  position: relative;
+  width: 13rem;
+ background: #d3d3d3;
+ border:1px solid black;
+  color: rgb(16, 15, 15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -7rem;
+  margin-left: 20rem;
+ border-radius: 24px;
+ padding-left: 30px;
+ padding-right: 30px;
+}
+.projectbtn a:hover{
+  text-decoration: none;
+    font-size: 1.2rem;
+  background: linear-gradient(200deg, rgba(147, 147, 147, 0.548) 0%,  rgb(151, 179, 190) 81%); 
+}
+
+
+.thumbnail-container  {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 25%;
+  height: 25rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+scrollbar-color:  #585858 rgb(15, 15, 15); /* thumb and track colors */
+  scrollbar-width:thin; /* thin, auto, or none */
+  position: relative;
+  margin-left: -43rem;
+border-left: 10px solid rgba(31, 30, 30, 0.788);
+}
+
+/* Targets the scrollbar itself */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* Targets the track of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Light grey track */
+}
+
+/* Targets the thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Dark grey thumb */
+  border-radius: 20px;
+}
+
+/* Optional: change the thumb's color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker grey on hover */
+}
+
+.thumbnail {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s; /* Animation on click */
+  border: 3px solid rgba(115, 115, 115, 0.701);
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
+}
+
+  @media (max-width: 768px) {
+    .image-gallery{
+     display: none;
+    }
+    .main-image-container {
+  position: relative;
+  width: 70%;
+}
+.main-image {
+  width: 23rem;
+  margin-left: 0rem;
+  height: 15rem;
+    opacity: 0.8;
+ border-radius: 5%;
+}
+.thumbnail-container  {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 20%;
+  height: 28rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+scrollbar-color:  #484848 rgb(15, 15, 15); /* thumb and track colors */
+  scrollbar-width:thin; /* thin, auto, or none */
+
+  position: relative;
+  margin-left: 0rem;
+
+}
+
+  }

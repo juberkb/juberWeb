@@ -1,0 +1,108 @@
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.navbar{
+     background-color:rgb(12, 12, 12);
+     cursor: pointer;
+}
+.NavLogo img{
+height:80px ;
+width: 200px;
+}
+.navbar-toggler span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #000; /* Black color */
+  transition: transform 0.3s ease;
+}
+
+.navbar-toggler.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.collapse {
+  position:absolute;
+  top: 0rem;
+  right: 0;
+  bottom: 0;
+  width: 50%; /* Adjust as needed */
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  /* height: 10vh; */
+  overflow-y: auto;
+  padding-top: 50px; /* Adjust as needed */
+  background-color: #000; /* Black color */
+
+  /* margin-left: 1rem; */
+}
+.collapse .navbar-nav .nav-link {
+margin-left: 1.2rem;
+  color: #d3d3d3; /* White color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+font-size: 1.5rem;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler span{
+     display: block;
+    width: 30px;
+    height: 3px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+.collapse .navbar-nav .nav-link:hover {
+  color: #fff; /* White color on hover */
+}
+@media (min-width: 992px) {
+  .collapse {
+     background-color:rgb(12, 12, 12);
+      height: 7vh;
+     width: 50%; /* Adjust as needed */
+    position: relative;
+    width: auto;
+   
+    overflow-y: visible;
+    padding-top: 0;
+ justify-content: flex-end;
+  }
+}
+   @media (max-width: 768px) {
+      .collapse {
+ background: rgba( 0, 0, 0, 0.8 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 0.5px );
+-webkit-backdrop-filter: blur( 0.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+          top: 5rem;
+          width: 60%;
+      height: 50vh;
+      margin-right: 2rem;
+  }
+  .collapse .navbar-nav .nav-item {
+    font-weight: 900;
+margin-left: 1rem;
+  color: #ffffff; 
+    transition: color 0.3s ease;
+font-size: 2rem;
+}
+ .collapse .navbar-nav .nav-item .navButton{
+  font-size: 2rem;
+ }
+   }

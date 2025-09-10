@@ -1,0 +1,69 @@
+/* GotoTop.css */
+.wrapper {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  z-index: 1000;
+}
+
+.gotobtn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-size: 1.8rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
+
+.gotobtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.top-btn-icon {
+  color: rgb(255, 255, 255);
+  animation: gototop 1.2s linear infinite alternate-reverse;
+}
+
+@keyframes gototop {
+  0% {
+    transform: translateY(-0.3rem);
+  }
+  100% {
+    transform: translateY(0.3rem);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .wrapper {
+    bottom: 2rem;
+    right: 2rem;
+  }
+  
+  .gotobtn {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .gotobtn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+}

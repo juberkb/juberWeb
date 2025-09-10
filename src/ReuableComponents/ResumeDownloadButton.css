@@ -1,0 +1,54 @@
+/* ResumeDownloadButton.css */
+
+/* Normal state */
+.resume-button {
+ margin-left: 6rem;
+    margin-top: 10px;
+  /* margin-left: 0px; */
+    border: 1px solid #d3d3d3;
+  padding: 5px 5px;
+  font-size: 1rem;
+  font-weight: 500;
+ background: #d3d3d3;
+  color: rgb(16, 15, 15);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  
+}
+
+/* Hover state */
+.resume-button:hover {
+
+
+  font-weight: normal;
+  color: #d3d3d3;
+    background:black;
+    border: 1px solid #d3d3d3;
+
+}
+
+
+   @media (max-width: 768px) {
+.resume-button {
+    margin-top: 10px;
+  margin-left: 0rem;
+  padding: 5px 5px;
+  font-size: 1.3rem;
+ background: #d3d3d3;
+  color: rgb(16, 15, 15);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  margin-bottom: 0px;
+}
+
+/* Hover state */
+.resume-button:hover {
+  color: #eef1f5;
+    background:transparent;
+    border: 1px solid whitesmoke;
+}
+}

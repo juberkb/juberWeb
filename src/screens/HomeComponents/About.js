@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.css';
-import Kbjuber from '../../Media/aboutImageKB.jpg';
+import Kbjuber from '../../Media/juberkb.jpeg';
 
 function About() {
     return ( 

@@ -13,7 +13,7 @@ import MyBlogs from "./HomeComponents/MyBlogs";
 function Home() {
   const [rating, setRating] = useState(4.5);
   const [experience, setExperience] = useState(0);
-  const startDate = new Date(2024, 2, 10);
+const startDate = new Date(2024, 9, 2); 
 
   const contentRef = useRef(null);
 
@@ -25,33 +25,29 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    const calculateExperience = () => {
-      const today = new Date();
+useEffect(() => {
+  const startDate = new Date(2024, 9, 2); // October 2, 2024
 
-      // Calculate months difference from startDate
-      const yearDiff = today.getFullYear() - startDate.getFullYear();
-      const monthDiff = today.getMonth() - startDate.getMonth();
-      const totalMonths = yearDiff * 12 + monthDiff;
+  const calculateExperience = () => {
+    const today = new Date();
 
-      // Only count completed months after the 10th
-      let months = totalMonths;
-      if (today.getDate() < 10) {
-        months -= 1;
-      }
+    const yearDiff = today.getFullYear() - startDate.getFullYear();
+    const monthDiff = today.getMonth() - startDate.getMonth();
+    let totalMonths = yearDiff * 12 + monthDiff;
 
-      // Each month = 0.1 years
-      const expInYears = (months * 0.1).toFixed(1);
-      setExperience(expInYears);
-    };
+    if (today.getDate() < startDate.getDate()) {
+      totalMonths -= 1;
+    }
 
-    calculateExperience();
+    const expInYears = (totalMonths / 12).toFixed(1);
+    setExperience(expInYears);
+  };
 
-    // Optional: re-check daily at midnight
-    const timer = setInterval(calculateExperience, 1000 * 60 * 60 * 24);
-    return () => clearInterval(timer);
-  }, []);
+  calculateExperience();
 
+  const timer = setInterval(calculateExperience, 1000 * 60 * 60 * 24);
+  return () => clearInterval(timer);
+}, []);
   const Button = ({ label, className, link, onClick }) => {
     if (link) {
       return (
@@ -137,7 +133,7 @@ function Home() {
                     })}
                   </div>
                   <p className="experience-text">
-                    {experience}+ Years of Experience
+                    {experience}+ Years of Experience in Mern Stack
                   </p>
                 </div>
 

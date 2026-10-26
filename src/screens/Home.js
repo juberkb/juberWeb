@@ -1,220 +1,282 @@
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./home.css";
+
 import MyWorkExp from "./HomeComponents/MyWorkExp";
 import MySkills from "./HomeComponents/MySkills";
 import MyProjects from "./HomeComponents/MyProjects";
 import About from "./HomeComponents/About";
-
-import portfolioTopImage from "../Media/Juberkhan.webp";
 import ContactInfo from "./HomeComponents/ContactInfo";
 import HireMeServicePage from "./HomeComponents/HireMeServicePage";
 import MyBlogs from "./HomeComponents/MyBlogs";
 
-function Home() {
-  const [rating, setRating] = useState(4.5);
-  const [experience, setExperience] = useState(0);
-const startDate = new Date(2024, 9, 2); 
+import portfolioTopImage from "../Media/Juberkhan.webp";
 
+const EXPERIENCE_START_DATE = new Date(2024, 9, 2);
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/juber-khan-27a8751b8",
+    className: "primary-btn",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/juberkb",
+    className: "primary-btn",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/khan.juber_kb",
+    className: "secondary-btn",
+  },
+];
+
+function calculateExperience() {
+  const today = new Date();
+  let months =
+    (today.getFullYear() - EXPERIENCE_START_DATE.getFullYear()) * 12 +
+    today.getMonth() -
+    EXPERIENCE_START_DATE.getMonth();
+
+  if (today.getDate() < EXPERIENCE_START_DATE.getDate()) {
+    months -= 1;
+  }
+
+  return Math.max(0, months / 12);
+}
+
+function Home() {
+  const [experience, setExperience] = useState(calculateExperience);
   const contentRef = useRef(null);
 
-  const scrollToContent = () => {
-    if (contentRef.current) {
-      contentRef.current.scrollIntoView({ behavior: "smooth" });
-    } else {
-      console.error("Content reference is null.");
-    }
-  };
+  useEffect(() => {
+    const updateExperience = () => {
+      setExperience(calculateExperience());
+    };
 
-useEffect(() => {
-  const startDate = new Date(2024, 9, 2); // October 2, 2024
-
-  const calculateExperience = () => {
-    const today = new Date();
-
-    const yearDiff = today.getFullYear() - startDate.getFullYear();
-    const monthDiff = today.getMonth() - startDate.getMonth();
-    let totalMonths = yearDiff * 12 + monthDiff;
-
-    if (today.getDate() < startDate.getDate()) {
-      totalMonths -= 1;
-    }
-
-    const expInYears = (totalMonths / 12).toFixed(1);
-    setExperience(expInYears);
-  };
-
-  calculateExperience();
-
-  const timer = setInterval(calculateExperience, 1000 * 60 * 60 * 24);
-  return () => clearInterval(timer);
-}, []);
-  const Button = ({ label, className, link, onClick }) => {
-    if (link) {
-      return (
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={className}
-        >
-          {label}
-        </a>
-      );
-    }
-
-    return (
-      <button onClick={onClick} className={className}>
-        {label}
-      </button>
+    const timer = window.setInterval(
+      updateExperience,
+      24 * 60 * 60 * 1000
     );
-  };
+
+    document.addEventListener("visibilitychange", updateExperience);
+
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", updateExperience);
+    };
+  }, []);
+
+  const scrollToContent = useCallback(() => {
+    contentRef.current?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start",
+    });
+  }, []);
 
   return (
-    <div>
-      <div className="home">
-        <section className="hero-section">
-          <div className="hero-container">
-            <div className="hero-content">
-              <div className="hero-text">
-                <h6 className="hero-greeting">Hello, I'm</h6>
-                <h1 className="hero-name">Juber Khan</h1>
-                <div className="hero-tagline">
-                  <span className="tagline-text">React.js Developer</span>
-                  <span className="tagline-dot"></span>
-                  <span className="tagline-text">Full Stack Engineer</span>
+    <main className="home" id="top">
+      <section className="hero-section" aria-labelledby="hero-title">
+        <div className="hero-container">
+          <div className="hero-content">
+            {/* Intro */}
+            <div className="hero-text">
+              <div className="hero-eyebrow">
+                <span className="hero-eyebrow-line" />
+                <span className="hero-greeting">Hello, I'm</span>
+              </div>
+
+              <h1 className="hero-name" id="hero-title">
+                Juber <span>Khan.</span>
+              </h1>
+
+              <div className="hero-tagline">
+                <span className="tagline-text">React.js Developer</span>
+                <span className="tagline-dot" aria-hidden="true" />
+                <span className="tagline-text">Full Stack Engineer</span>
+              </div>
+
+              <p className="hero-description">
+                I build modern, responsive web applications with a focus on
+                clean code, thoughtful UI, and exceptional user experiences.
+                I enjoy turning ideas into reliable digital products using
+                modern frontend technologies and scalable development practices.
+              </p>
+
+              {/* Location and availability */}
+              <div className="hero-details">
+                <div className="detail-item">
+                  <span className="detail-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+                      <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                  </span>
+                  <span className="detail-text">Jaipur, Rajasthan, India</span>
                 </div>
 
-                <p className="hero-description">
-                  Experienced React.js Developer specializing in innovative web
-                  application development. Committed to writing high-quality
-                  code and delivering exceptional user experiences through
-                  collaborative teamwork.
-                </p>
-
-                <div className="hero-details">
-                  <div className="detail-item">
-                    <div className="detail-icon">📍</div>
-                    <div className="detail-text">Jaipur, Rajasthan (India)</div>
-                  </div>
-
-                  <div className="detail-item">
-                    <div className="availability-dot"></div>
-                    <div className="detail-text">
-                      Available for new projects
-                    </div>
-                  </div>
-                </div>
-
-                <div className="experience-rating">
-                  <div className="star-rating">
-                    {[1, 2, 3, 4, 5].map((index) => {
-                      // Calculate how much of each star should be filled
-                      let fillPercentage = 0;
-                      if (index <= Math.floor(rating)) {
-                        fillPercentage = 100; // Fully filled star
-                      } else if (
-                        index === Math.ceil(rating) &&
-                        rating % 1 !== 0
-                      ) {
-                        fillPercentage = (rating % 1) * 100; // Partially filled star
-                      }
-
-                      return (
-                        <div key={index} className="star-container">
-                          <span className="star-empty">&#9733;</span>
-                          <span
-                            className="star-filled"
-                            style={{ width: `${fillPercentage}%` }}
-                          >
-                            &#9733;
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <p className="experience-text">
-                    {experience}+ Years of Experience in Mern Stack
-                  </p>
-                </div>
-
-                <div className="hero-buttons">
-                  <div className="button-row">
-                    <Button
-                      label="LinkedIn"
-                      className="hero-btn primary-btn"
-                      link="https://www.linkedin.com/in/juber-khan-27a8751b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                    />
-                    <Button
-                      label="GitHub"
-                      className="hero-btn primary-btn"
-                      link="https://github.com/juberkb"
-                    />
-                  </div>
-
-                  <div className="button-row">
-                    <Button
-                      label="Instagram"
-                      className="hero-btn secondary-btn"
-                      link="https://www.instagram.com/khan.juber_kb"
-                    />
-
-                    <Button
-                      label="My Work"
-                      className="hero-btn accent-btn"
-                      onClick={scrollToContent}
-                    />
-                  </div>
+                <div className="detail-item">
+                  <span
+                    className="availability-dot"
+                    aria-hidden="true"
+                  />
+                  <span className="detail-text">
+                    Available for new opportunities
+                  </span>
                 </div>
               </div>
 
-              <div className="hero-image">
-                <div className="image-container">
+              {/* Experience */}
+              <div className="experience-rating">
+                <div className="experience-badge">
+                  <span className="experience-badge-number">
+                    {experience.toFixed(1)}+
+                  </span>
+                  <span className="experience-badge-copy">
+                    Years of experience
+                  </span>
+                </div>
+
+                <div className="experience-divider" />
+
+                <p className="experience-text">
+                  Building thoughtful digital
+                  <br className="experience-line-break" />
+                  experiences with modern technology.
+                </p>
+              </div>
+
+              {/* Social and project actions */}
+              <div className="hero-buttons">
+                <div className="button-row">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`hero-btn ${social.className}`}
+                    >
+                      <span>{social.label}</span>
+                      <span className="hero-btn-arrow" aria-hidden="true">
+                        ↗
+                      </span>
+                    </a>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  className="hero-btn accent-btn"
+                  onClick={scrollToContent}
+                >
+                  <span>Explore My Work</span>
+                  <span className="hero-btn-arrow" aria-hidden="true">
+                    ↓
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Profile image */}
+            <div className="hero-image">
+              <div className="image-container">
+                <div className="image-glow" aria-hidden="true" />
+
+                <div className="image-frame">
                   <img
                     src={portfolioTopImage}
-                    alt="Juber Khan"
+                    alt="Juber Khan, web developer"
                     className="profile-image"
+                    fetchPriority="high"
+                    decoding="async"
                   />
-                  <div className="image-overlay"></div>
-                  <div className="floating-elements">
-                    <div className="floating-element element-1">React</div>
-                    <div className="floating-element element-2">Node.js</div>
-                    <div className="floating-element element-3">JavaScript</div>
+                </div>
+
+                <div className="image-overlay" aria-hidden="true" />
+
+                <div className="image-corner image-corner-top" />
+                <div className="image-corner image-corner-bottom" />
+
+                <div className="floating-elements" aria-hidden="true">
+                  <div className="floating-element element-1">
+                    <span className="floating-element-dot" />
+                    React.js
                   </div>
+
+                  <div className="floating-element element-2">
+                    Node.js
+                  </div>
+
+                  <div className="floating-element element-3">
+                    JavaScript
+                  </div>
+                </div>
+
+                <div className="hero-image-caption">
+                  <span className="hero-image-caption-dot" />
+                  <span>Design. Develop. Deliver.</span>
                 </div>
               </div>
             </div>
-
-            <div className="scroll-indicator">
-              <div className="scroll-line"></div>
-              <div className="scroll-text">Scroll to explore</div>
-            </div>
           </div>
-        </section>
 
-        <section id="aboutMe">
-          <About />
-        </section>
-        <section id="myblogs">
-          <MyBlogs />
-        </section>
-        <section id="myskills">
-          <MySkills />
-        </section>
+          {/* Scroll indicator */}
+          <button
+            type="button"
+            className="scroll-indicator"
+            onClick={scrollToContent}
+            aria-label="Scroll down to explore my projects"
+          >
+            <span className="scroll-line" aria-hidden="true" />
+            <span className="scroll-text">Scroll to explore</span>
+          </button>
+        </div>
+      </section>
 
-        <section id="myProjects" ref={contentRef}>
-          <MyProjects />
-        </section>
-        <section id="myservice">
-          <HireMeServicePage />
-        </section>
+      <section id="aboutMe" aria-label="About me">
+        <About />
+      </section>
 
+      <section id="myblogs" aria-label="Blog articles">
+        <MyBlogs />
+      </section>
+
+      <section id="myskills" aria-label="Technical skills">
+        <MySkills />
+      </section>
+
+      <section
+        id="myProjects"
+        ref={contentRef}
+        className="home-projects-section"
+        aria-label="My projects"
+      >
+        <MyProjects />
+      </section>
+
+      <section id="myservice" aria-label="Services">
+        <HireMeServicePage />
+      </section>
+
+      <section id="myExperience" aria-label="Work experience">
         <MyWorkExp />
+      </section>
 
-        <section id="contactme">
-          <ContactInfo />
-        </section>
-      </div>
-    </div>
+      <section id="contactme" aria-label="Contact me">
+        <ContactInfo />
+      </section>
+    </main>
   );
 }
 

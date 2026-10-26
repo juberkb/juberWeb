@@ -1,74 +1,124 @@
-// import React, { useState } from "react";
-// import { NavLink, Link } from "react-router-dom";
-// import NavLogo from "../Media/jkb-png.png"
-// import ResumeDownloadButton from "../ReuableComponents/ResumeDownloadButton";
+import React, { useState } from 'react';
+import { Link } from 'react-scroll';
+import NavLogo from "../Media/jkb-png.webp"
+import ResumeDownloadButton from "../ReuableComponents/ResumeDownloadButton";
+import "./navbar.css"
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <div className="container">
+        <Link className="NavLogo" to="/">
+          <img src={NavLogo} alt="navlogo"/>
+          </Link>
+           
+     
+        <button className={`navbar-toggler ${menuOpen ? 'open' : ''}`} type="button" onClick={toggleMenu} alt="togglerButton">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-// const Navbar = () => {
-//   const [openMenu, setOpenMenu] = useState(false);
+        <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClass="active"
+                to="aboutMe"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={toggleMenu}
+              >
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClass="active"
+                to="myskills"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={toggleMenu}
+              >
+               Skills
+              </Link>
+            </li>
+             <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClass="active"
+                to="myProjects"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={toggleMenu}
+              >
+            Projects
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClass="active"
+                to="myservice"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={toggleMenu}
+              >
+               Service
+              </Link>
+            </li>
+             <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClass="active"
+                to="contactme"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={toggleMenu}
+              >
+                Contact
+              </Link>
+            </li>
+             <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClass="active"
+                to="myblogs"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={toggleMenu}
+              >
+        Blogs
+              </Link>
+            </li>
+        
+                <li className="nav-item">
+         <ResumeDownloadButton className="navButton"/>
+        </li> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-
-
-//   return (
-//    <section id="header">
-//     <div className="container">
-//       <div className="row">
-//         <div className="col-md-12">
-//         <nav className="navbar navbar-expand-lg">
-//         <div className="container-fluid">
-//           <Link className="NavLogo" to="/">
-//           <img src={NavLogo} alt="navlogo"/>
-//           </Link>
-//           <button className="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//             <span className="toggler-icon top-bar"></span>
-//             <span className="toggler-icon middle-bar"></span>
-//             <span className="toggler-icon bottom-bar"></span>
-//           </button>
-//           <div className="collapse navbar-collapse" id="navbarNav">
-//             <ul className="navbar-nav text-center ms-auto me-5 fs-4">
-//               <li className="nav-item">
-//                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-//               </li>
-//                <li className="nav-item">
-//           <Link className="nav-link active" to="aboutMe">About</Link>
-//         </li>
-//                 <li className="nav-item">
-//           <Link className="nav-link active" to="/skills">Skills</Link>
-//         </li>
-//                 <li className="nav-item">
-//           <Link className="nav-link active" to="/projects">Projects</Link>
-//         </li>
-//      <li className="nav-item">
-//           <Link className="nav-link active" to="/services">Services</Link>
-//         </li>  
-//           <li className="nav-item">
-//           <Link className="nav-link active" to="/contact">Contact</Link>
-//         </li>  
-//          <li className="nav-item">
-//           <Link className="nav-link active" to="/axiosapi">Api-Data</Link>
-//         </li> 
-//           <li className="nav-item">
-//          <ResumeDownloadButton/>
-//         </li> 
-       
-//             </ul>
-//           </div>
-//         </div>
-      
-//       </nav>
- 
-    
-//         </div>
-//       </div>
-//     </div>
-
-
-//   </section>
-//   );
-// };
-
-// export default Navbar;
-
-
-
+export default Navbar;

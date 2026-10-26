@@ -1,105 +1,308 @@
-import './myworkexp.css'
-import WebVixaLogo from "../../Media/webvixa-logo.png"
-import magicEdtechLogo from "../../Media/magicEdtech.png"
-import grassSolutionLogo from "../../Media/grassSolutions.png"
-import lineStyleFirstImage from "../../Media/p5.png"
+
+import React from "react";
+import {
+  FiArrowUpRight,
+  FiBriefcase,
+  FiCalendar,
+  FiCode,
+} from "react-icons/fi";
+
+import "./myworkexp.css";
+
+import WebVixaLogo from "../../Media/webvixa-logo.png";
+import magicEdtechLogo from "../../Media/magicEdtech.png";
+import grassSolutionLogo from "../../Media/grassSolutions.png";
+
+const experiences = [
+  {
+    id: "01",
+    company: "WebVixa Software Private Ltd.",
+    role: "Full Stack Developer",
+    tenure: "Oct 2024 - Present",
+    logo: WebVixaLogo,
+    projects: [
+      {
+        title:
+          "Full-Stack Web Migration Project (MSSQL + Google Cloud Storage)",
+        points: [
+          <>
+            Redesigned and migrated a legacy desktop application into a
+            scalable web platform using <strong>React.js</strong> and{" "}
+            <strong>Node.js</strong>.
+          </>,
+          <>
+            Implemented multi-admin user management with secure
+            registration, login, forgot-password, profile-editing, and
+            password-update flows.
+          </>,
+          <>
+            Integrated <strong>MSSQL</strong> for data management and{" "}
+            <strong>Google Cloud Storage</strong> for images and PDFs, with
+            folder-level access based on user credentials.
+          </>,
+          <>
+            Built a hybrid data-fetching system to support cloud and legacy
+            content while maintaining backward compatibility.
+          </>,
+          <>
+            Developed image processing functionality to split large images,
+            create album-style layouts, and provide password-protected media
+            views.
+          </>,
+          <>
+            Created a <strong>React Native</strong> application for Android
+            and iOS with online and offline album viewing.
+          </>,
+        ],
+      },
+      {
+        title: "Wedding Services Platform — Frontend",
+        points: [
+          <>
+            Led frontend development of a multi-form wedding services
+            platform using <strong>React.js</strong> and reusable,
+            responsive UI components.
+          </>,
+          <>
+            Implemented <strong>Zustand</strong> for global state management
+            across complex, multi-step forms.
+          </>,
+          <>
+            Built URL-based dynamic routing for bride/groom, photographer,
+            and planner form experiences.
+          </>,
+          <>
+            Implemented entry detection and IP-based geolocation to support
+            automatic country-code selection and location-specific content.
+          </>,
+        ],
+      },
+      {
+        title: "Tech-Hub MERN Stack Coaching Platform",
+        points: [
+          <>
+            Developed a coaching platform using the <strong>MERN stack</strong>
+            alongside <strong>MSSQL</strong>.
+          </>,
+          <>
+            Created secure admin and student panels with authentication,
+            session tracking, and data filtering.
+          </>,
+          <>
+            Built dynamic course listings, schedules, and user-management
+            pages.
+          </>,
+          <>
+            Improved workflows and user experience through reusable
+            application components.
+          </>,
+        ],
+      },
+    ],
+  },
+  {
+    id: "02",
+    company: "Grass Software Solution",
+    role: "Frontend React.js Developer",
+    tenure: "Dec 2023 - Sept 2024",
+    logo: grassSolutionLogo,
+    highlights: [
+      <>
+        Revamped the company's product website using <strong>React.js</strong>,
+        enhancing its overall performance and user experience.
+      </>,
+      <>
+        Translated design mockups into responsive, cross-browser-compatible
+        user interfaces.
+      </>,
+      <>
+        Optimized user experience and reduced bundle size through efficient
+        coding practices and streamlined API design.
+      </>,
+    ],
+  },
+  {
+    id: "03",
+    company: "Magic Edtech",
+    role: "Accessibility & Manual Web Testing Engineer",
+    tenure: "Dec 2021 - Aug 2023",
+    logo: magicEdtechLogo,
+    summary: (
+      <>
+        Experienced in ADA, Section 508, and WCAG 2.0/2.1 compliance testing.
+        Proficient in creating accessibility test scenarios, using screen
+        readers such as JAWS, NVDA, and VoiceOver, identifying issues,
+        recommending fixes, and preparing VPAT and compliance reports.
+        Skilled in manual web testing, including UI/UX validation,
+        cross-browser testing, responsive design checks, functional testing,
+        and bug reporting using tools like Jira.
+      </>
+    ),
+  },
+];
 
 function MyWorkExp() {
-    return ( 
-     <div className='myWorkExpContent'>
-       <div className="container">
-         <h2 className='myWorkExpHeading'>Work Experience</h2>
-         
-         <div className="timeline">
-           <div className="timeline-line"></div>
-           
-           <div className="experience-card">
-             <div className="card-header">
-               <div className="company-info">
-                 <img src={WebVixaLogo} alt='WebVixa' className='company-logo'/>
-                 <div className="company-details">
-                   <h2>Webvixa Software Private Ltd.</h2>
-                   <h3>Full Stack Developer</h3>
-                   <span className='tenure'>Oct 2024 - Present</span>
-                 </div>
-               </div>
-               <div className="timeline-marker"></div>
-             </div>
-             
-             <div className="card-content">
-               <div className="project-experience">
-                 <h4>Full-Stack Web Migration Project (MSSQL + Google Cloud Storage)</h4>
-                 <ul>
-                   <li>Redesigned and migrated a legacy desktop application into a scalable, full-featured web platform using <b>ReactJS</b> (frontend) and <b>Node.js</b> (backend).</li>
-                   <li>Implemented multi-admin user management with secure authentication flows (register, login, forgot password, edit profile, password update).</li>
-                   <li>Integrated <b>MSSQL</b> for robust data handling and <b>Google Cloud Storage</b> for asset management (images, PDFs), with folder-wise data access based on user credentials.</li>
-                   <li>Built a hybrid data-fetching system to support both cloud and legacy content, ensuring smooth transition and backward compatibility.</li>
-                   <li>Developed an intelligent image processing module that splits large images, creates album-style layouts, and displays media securely with password-protected views.</li>
-                   <li>Created a <b>React Native</b> app (Android + iOS) for viewing albums in online and offline modes.</li>
-                 </ul>
+  return (
+    <section className="myWorkExpContent" id="work-experience">
+      <div className="workexp-container">
+        {/* Editorial header */}
 
-                 <h4>Wedding Services Platform (Frontend Only)</h4>
-                 <ul>
-                   <li>Led frontend development of a multi-form wedding services platform using <b>ReactJS</b> with responsive and reusable UI components.</li>
-                   <li>Implemented <b>Zustand</b> for efficient global state management to handle complex, multi-step forms.</li>
-                   <li>Designed URL-based dynamic routing to serve customized forms for different user types (bride/groom, photographer, planner).</li>
-                   <li>Built smart entry detection and IP-based geolocation for auto country code setting and location-specific content delivery.</li>
-                 </ul>
+        <div className="workexp-topline">
+          <span className="workexp-index">CAREER / EXPERIENCE</span>
 
-                 <h4>Tech-Hub MERN Stack Coaching Platform (with MSSQL)</h4>
-                 <ul>
-                   <li>Developed a full-stack web application for a tech coaching institute using the <b>MERN stack</b> with <b>MSSQL</b>.</li>
-                   <li>Created secure admin and student panels with login, session tracking, and data filtering.</li>
-                   <li>Developed dynamic pages for course listings, schedules, and user management.</li>
-                   <li>Streamlined operations and enhanced overall user experience with scalable design.</li>
-                 </ul>
-               </div>
-             </div>
-           </div>
-           
-           <div className="experience-card">
-             <div className="card-header">
-               <div className="company-info">
-                 <img src={grassSolutionLogo} alt='Grass Software Solution' className='company-logo'/>
-                 <div className="company-details">
-                   <h2>Grass Software Solution</h2>
-                   <h3>Frontend Reactjs Developer</h3>
-                   <span className='tenure'>Dec 2023 - Sept 2024</span>
-                 </div>
-               </div>
-               <div className="timeline-marker"></div>
-             </div>
-             
-             <div className="card-content">
-               <ul>
-                 <li>Revamped the company's product website using React.js, enhancing overall performance and user experience.</li>
-                 <li>Translated design mockups into responsive, cross-browser compatible user interfaces.</li>
-                 <li>Optimized UX and reduced bundle size through efficient coding practices and streamlined API design.</li>
-               </ul>
-             </div>
-           </div>
-           
-           <div className="experience-card">
-             <div className="card-header">
-               <div className="company-info">
-                 <img src={magicEdtechLogo} alt='Magic Edtech' className='company-logo'/>
-                 <div className="company-details">
-                   <h2>Magic Edtech</h2>
-                   <h3>Accessibility & Manual Web Testing Engineer</h3>
-                   <span className='tenure'>Dec 2021 - Aug 2023</span>
-                 </div>
-               </div>
-               <div className="timeline-marker"></div>
-             </div>
-             
-             <div className="card-content">
-               <p>Experienced in ADA, Section 508, and WCAG 2.0/2.1 compliance testing. Proficient in creating accessibility test scenarios, using screen readers (JAWS, NVDA, VoiceOver), identifying issues, recommending fixes, and preparing VPAT and compliance reports. Skilled in manual web testing, including UI/UX validation, cross-browser testing, responsive design checks, functional testing, and bug reporting using tools like Jira.</p>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-    );
+          <span className="workexp-topline-rule" />
+
+          <span className="workexp-topline-note">
+            THE JOURNEY SO FAR
+          </span>
+        </div>
+
+        {/* Section introduction */}
+
+        <div className="workexp-heading-row">
+          <div>
+            <p className="workexp-eyebrow">
+              EXPERIENCE THAT SHAPES MY WORK
+            </p>
+
+            <h2 className="myWorkExpHeading">
+              My professional
+              <br />
+              <span>journey.</span>
+            </h2>
+
+            <p className="workexp-subtitle">
+              A look at the teams, products, and technical challenges
+              that have shaped my experience across web development,
+              mobile applications, and accessibility testing.
+            </p>
+          </div>
+
+          <div className="workexp-heading-decoration">
+            <FiBriefcase />
+            <span>LEARN · BUILD · GROW</span>
+          </div>
+        </div>
+
+        {/* Experience timeline */}
+
+        <div className="timeline">
+          <div className="timeline-line" aria-hidden="true" />
+
+          {experiences.map((experience) => (
+            <article
+              className="experience-card"
+              key={experience.id}
+            >
+              <span
+                className="timeline-marker"
+                aria-hidden="true"
+              />
+
+              {/* Company header */}
+
+              <div className="experience-card-header">
+                <div className="company-info">
+                  <div className="company-logo-wrap">
+                    <img
+                      src={experience.logo}
+                      alt={`${experience.company} logo`}
+                      className="company-logo"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="company-details">
+                    <span className="company-label">
+                      EMPLOYMENT / {experience.id}
+                    </span>
+
+                    <h3>{experience.company}</h3>
+
+                    <p className="company-role">
+                      {experience.role}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="tenure">
+                  <FiCalendar />
+                  <span>{experience.tenure}</span>
+                </div>
+              </div>
+
+              {/* Experience details */}
+
+              <div className="card-content">
+                {experience.projects &&
+                  experience.projects.map((project) => (
+                    <section
+                      className="project-experience"
+                      key={project.title}
+                    >
+                      <h4>
+                        <FiCode />
+                        <span>{project.title}</span>
+                      </h4>
+
+                      <ul>
+                        {project.points.map((point, index) => (
+                          <li key={index}>{point}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  ))}
+
+                {experience.highlights && (
+                  <div className="experience-highlights">
+                    <h4 className="experience-overview-title">
+                      Key contributions
+                    </h4>
+
+                    <ul>
+                      {experience.highlights.map((point, index) => (
+                        <li key={index}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {experience.summary && (
+                  <div className="experience-highlights">
+                    <h4 className="experience-overview-title">
+                      Responsibilities & expertise
+                    </h4>
+
+                    <p className="experience-summary">
+                      {experience.summary}
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Card footer */}
+
+              <div className="experience-card-footer">
+                <span>PROFESSIONAL EXPERIENCE</span>
+                <FiArrowUpRight />
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Closing statement */}
+
+        <div className="workexp-bottom-line">
+          <span>EVERY EXPERIENCE IS AN OPPORTUNITY TO GROW.</span>
+
+          <span className="workexp-bottom-accent">
+            BUILT ON CURIOSITY AND CONTINUOUS LEARNING.
+            <FiArrowUpRight />
+          </span>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default MyWorkExp;

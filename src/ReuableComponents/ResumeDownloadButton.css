@@ -1,54 +1,70 @@
-/* ResumeDownloadButton.css */
 
-/* Normal state */
 .resume-button {
- margin-left: 6rem;
-    margin-top: 10px;
-  /* margin-left: 0px; */
-    border: 1px solid #d3d3d3;
-  padding: 5px 5px;
-  font-size: 1rem;
-  font-weight: 500;
- background: #d3d3d3;
-  color: rgb(16, 15, 15);
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 48px;
+  margin-top: 10px;
+  padding: 12px 22px;
+
+  color: #171222;
+  background: linear-gradient(135deg, #c9baff, #a991ff);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 0.94rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+
   cursor: pointer;
-  border-radius: 10px;
-  transition: background-color 0.3s ease; /* Add a smooth transition effect */
-  
+  box-shadow: 0 4px 16px rgba(183, 162, 255, 0.12);
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-/* Hover state */
+.resume-button-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
 .resume-button:hover {
-
-
-  font-weight: normal;
-  color: #d3d3d3;
-    background:black;
-    border: 1px solid #d3d3d3;
-
+  background: linear-gradient(135deg, #d9ceff, #b7a2ff);
+  box-shadow: 0 8px 24px rgba(183, 162, 255, 0.23);
+  transform: translateY(-2px);
 }
 
-
-   @media (max-width: 768px) {
-.resume-button {
-    margin-top: 10px;
-  margin-left: 0rem;
-  padding: 5px 5px;
-  font-size: 1.3rem;
- background: #d3d3d3;
-  color: rgb(16, 15, 15);
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: background-color 0.3s ease; /* Add a smooth transition effect */
-  margin-bottom: 0px;
+.resume-button:hover .resume-button-icon {
+  transform: translateY(2px);
 }
 
-/* Hover state */
-.resume-button:hover {
-  color: #eef1f5;
-    background:transparent;
-    border: 1px solid whitesmoke;
+.resume-button:active {
+  transform: translateY(0) scale(0.98);
 }
+
+.resume-button:focus-visible {
+  outline: 2px solid #b7a2ff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .resume-button {
+    min-height: 46px;
+    padding: 11px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-button,
+  .resume-button-icon {
+    transition: none;
+  }
 }

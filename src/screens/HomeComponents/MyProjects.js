@@ -1,9 +1,14 @@
-// MyProjects.js (Enhanced Version)
-import React, { useState, useEffect, useRef } from 'react';
-import './myprojects.css';
-import Button from '../../ReuableComponents/Buttons';
 
-// Import project images
+import React, { useEffect, useState } from "react";
+import {
+  FiArrowUpRight,
+  FiExternalLink,
+  FiLayers,
+  FiX,
+} from "react-icons/fi";
+
+import "./myprojects.css";
+
 import Background1 from "../../Media/Project7dlm.png";
 import Background2 from "../../Media/appleClone.jpg";
 import Background3 from "../../Media/Project3fVA.png";
@@ -16,18 +21,15 @@ import Background9 from "../../Media/Project5MovieWithme.png";
 import Background10 from "../../Media/project11.png";
 import Background11 from "../../Media/Project4Unknown.png";
 
-// Import icons if needed
-import { FaExternalLinkAlt,} from 'react-icons/fa';
-
-// Project data structure for better organization
 const projects = [
   {
     id: 1,
-    title: "Bussiness 2 Bussiness",
+    title: "Business to Business",
     image: Background7,
     link: "https://b2b-ecom.vercel.app",
     category: "E-commerce",
-    description: "A full-featured B2B e-commerce platform with inventory management"
+    description:
+      "A B2B e-commerce platform focused on product discovery, business purchasing, and inventory management.",
   },
   {
     id: 2,
@@ -35,7 +37,8 @@ const projects = [
     image: Background4,
     link: "https://tech-coaching-frontend.vercel.app/",
     category: "Education",
-    description: "Online learning platform with course management and progress tracking"
+    description:
+      "An online learning platform concept featuring educational content, course management, and learner progress tracking.",
   },
   {
     id: 3,
@@ -43,7 +46,8 @@ const projects = [
     image: Background3,
     link: "https://farm-produce-navy.vercel.app",
     category: "Agriculture",
-    description: "Farmers' association platform for produce management and sales"
+    description:
+      "A farmers' association platform designed to support agricultural produce management and sales workflows.",
   },
   {
     id: 4,
@@ -51,7 +55,8 @@ const projects = [
     image: Background11,
     link: "https://freelance-web-7hee.vercel.app",
     category: "Freelance",
-    description: "Freelance platform connecting professionals with clients"
+    description:
+      "A freelance platform concept connecting professionals and clients through a dedicated digital experience.",
   },
   {
     id: 5,
@@ -59,7 +64,8 @@ const projects = [
     image: Background9,
     link: "https://moviewithme.vercel.app/",
     category: "Entertainment",
-    description: "Anime discovery platform with recommendations and reviews"
+    description:
+      "An entertainment discovery project exploring movie and anime content, recommendations, and reviews.",
   },
   {
     id: 6,
@@ -67,7 +73,8 @@ const projects = [
     image: Background1,
     link: "https://dailylivemedia.netlify.app/",
     category: "Media",
-    description: "News and media content platform with real-time updates"
+    description:
+      "A news and media website concept for presenting articles, updates, and editorial content.",
   },
   {
     id: 7,
@@ -75,7 +82,8 @@ const projects = [
     image: Background8,
     link: "https://juberkb.github.io/rentacarwithme/",
     category: "Automotive",
-    description: "Car rental service with booking and payment system"
+    description:
+      "A car rental website concept showcasing vehicle listings and a user-friendly browsing experience.",
   },
   {
     id: 8,
@@ -83,153 +91,312 @@ const projects = [
     image: Background10,
     link: "https://grras.com/",
     category: "Education",
-    description: "IT training institute website with course offerings"
+    description:
+      "An IT training and education website presenting technology courses and learning opportunities.",
   },
   {
     id: 9,
     title: "Apple Clone",
     image: Background2,
     link: "https://juberkb.github.io/apple-clone.in/",
-    category: "Tech",
-    description: "Apple website clone with responsive design"
+    category: "Technology",
+    description:
+      "A responsive Apple-inspired website recreation focused on visual presentation and interface layout.",
   },
   {
     id: 10,
     title: "Tic Tac Toe",
     image: Background5,
     link: "https://juberkb.github.io/tictactoe/",
-    category: "Game",
-    description: "Interactive tic-tac-toe game with win detection"
+    category: "Games",
+    description:
+      "An interactive Tic Tac Toe game featuring a familiar game board and win-detection logic.",
   },
   {
     id: 11,
     title: "Live Clock",
     image: Background6,
     link: "https://juberkb.github.io/realtimeclock/",
-    category: "Utility",
-    description: "Real-time clock with multiple timezone support"
-  }
+    category: "Utilities",
+    description:
+      "A real-time clock project focused on presenting current time through a clean digital interface.",
+  },
 ];
 
 function MyProjects() {
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
-  
-  // Extract unique categories
-  const categories = ['All', ...new Set(projects.map(project => project.category))];
-  
-  // Filter projects based on category
-  useEffect(() => {
-    if (activeFilter === 'All') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(projects.filter(project => project.category === activeFilter));
-    }
-  }, [activeFilter]);
-  
-  // Handle project selection for modal view
-  const handleProjectSelect = (project) => {
-    setSelectedProject(project);
-  };
-  
 
+  const categories = [
+    "All",
+    ...new Set(projects.map((project) => project.category)),
+  ];
+
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter(
+          (project) => project.category === activeFilter
+        );
+
+  // Close the details modal with Escape and lock background scrolling.
+  useEffect(() => {
+    if (!selectedProject) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedProject]);
 
   return (
-    <div className='projects-showcase'>
-      <div className="container">
-        <h2 className='section-title'>My <span className="accent">Projects</span></h2>
-        
-        <p className='section-subtitle'>
-          Explore my work across different domains. Click on any project to view details or visit the live site.
-        </p>
-        
-        {/* Category Filters */}
-        <div className="category-filters">
-          {categories.map(category => (
+    <section id="myProjects" className="projects-showcase">
+      <div className="projects-container">
+        {/* Editorial header */}
+
+        <div className="projects-topline">
+          <span className="projects-section-index">
+            03 / SELECTED WORK
+          </span>
+
+          <span className="projects-topline-rule" />
+
+          <span className="projects-topline-note">
+            DESIGN INTO DEVELOPMENT
+          </span>
+        </div>
+
+        {/* Main heading */}
+
+        <div className="projects-heading-row">
+          <div className="projects-heading-copy">
+            <p className="projects-eyebrow">
+              A COLLECTION OF THINGS I'VE BUILT
+            </p>
+
+            <h2 className="projects-title">
+              Ideas made
+              <br />
+              <span>real.</span>
+            </h2>
+
+            <p className="projects-subtitle">
+              Explore selected projects spanning web applications,
+              e-commerce, education, and interactive experiences.
+              Each project represents a different problem to solve.
+            </p>
+          </div>
+
+          <div className="projects-heading-decoration">
+            <FiLayers />
+            <span>THOUGHTFULLY BUILT</span>
+          </div>
+        </div>
+
+        {/* Filter toolbar */}
+
+        <div className="projects-toolbar">
+          <div className="projects-toolbar-label">
+            <span className="projects-live-dot" />
+            <span>BROWSE THE COLLECTION</span>
+          </div>
+
+          <span className="projects-count">
+            <strong>
+              {String(filteredProjects.length).padStart(2, "0")}
+            </strong>
+            <span>PROJECTS</span>
+          </span>
+        </div>
+
+        <div
+          className="category-filters"
+          role="group"
+          aria-label="Filter projects by category"
+        >
+          {categories.map((category) => (
             <button
               key={category}
-              className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
+              type="button"
+              className={`filter-btn ${
+                activeFilter === category ? "active" : ""
+              }`}
+              aria-pressed={activeFilter === category}
               onClick={() => setActiveFilter(category)}
             >
               {category}
             </button>
           ))}
         </div>
-        
-        {/* Projects Grid */}
+
+        {/* Project cards */}
+
         <div className="projects-grid">
-          {filteredProjects.map(project => (
-            <div 
-              key={project.id} 
-              className="project-card"
-              onClick={() => handleProjectSelect(project)}
-            >
+          {filteredProjects.map((project) => (
+            <article className="project-card" key={project.id}>
               <div className="project-image">
-                <img src={project.image} alt={project.title} />
-                <div className="project-overlay">
-                  <div className="project-info">
-                    <h3>{project.title}</h3>
-                    <p>{project.category}</p>
-                  </div>
-                  <div className="project-actions">
-                    <Button 
-                      label="View Project" 
-                      className="view-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(project.link, '_blank');
-                      }}
-                    />
-                  </div>
+                <img
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  loading="lazy"
+                />
+
+                <div className="project-image-shade" />
+
+                <span className="project-category-badge">
+                  <span className="project-badge-dot" />
+                  {project.category}
+                </span>
+
+                <span className="project-number">
+                  {String(project.id).padStart(2, "0")}
+                </span>
+
+                <a
+                  className="project-image-external"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title} live website`}
+                >
+                  <FiExternalLink />
+                </a>
+              </div>
+
+              <div className="project-card-content">
+                <span className="project-card-kicker">
+                  PROJECT / {String(project.id).padStart(2, "0")}
+                </span>
+
+                <h3 className="project-card-title">
+                  {project.title}
+                </h3>
+
+                <p className="project-description">
+                  {project.description}
+                </p>
+
+                <div className="project-card-footer">
+                  <button
+                    type="button"
+                    className="project-details-button"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    <span>Explore project</span>
+                    <FiArrowUpRight />
+                  </button>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-live-link"
+                  >
+                    Live site <FiExternalLink />
+                  </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-        
-    
+
+        {/* Bottom statement */}
+
+        <div className="projects-bottom-line">
+          <span>BUILT WITH CURIOSITY. REFINED THROUGH ITERATION.</span>
+
+          <span className="projects-bottom-accent">
+            GOOD WORK STARTS WITH A GOOD IDEA.
+            <FiArrowUpRight />
+          </span>
+        </div>
       </div>
-      
-      {/* Project Detail Modal */}
+
+      {/* Project details modal */}
+
       {selectedProject && (
-        <div className="project-modal">
-          <div className="modal-content">
-            <button 
+        <div
+          className="project-modal"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelectedProject(null);
+            }
+          }}
+        >
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+          >
+            <button
+              type="button"
               className="close-modal"
+              aria-label="Close project details"
               onClick={() => setSelectedProject(null)}
             >
-              &times;
+              <FiX />
             </button>
-            
-            <div className="modal-body">
-              <div className="modal-image">
-                <img src={selectedProject.image} alt={selectedProject.title} />
-              </div>
-              
-              <div className="modal-details">
-                <h2>{selectedProject.title}</h2>
-                <span className="project-category">{selectedProject.category}</span>
-                <p>{selectedProject.description}</p>
-                
-                <div className="modal-actions">
-                  <Button 
-                    label="Visit Live Site" 
-                    className="primary-btn"
-                    onClick={() => window.open(selectedProject.link, '_blank')}
-                    icon={<FaExternalLinkAlt />}
-                  />
-                  <Button 
-                    label="View Details" 
-                    className="secondary-btn"
-                  />
-                </div>
+
+            <div className="modal-image">
+              <img
+                src={selectedProject.image}
+                alt={`${selectedProject.title} project`}
+              />
+
+              <span className="modal-image-category">
+                {selectedProject.category}
+              </span>
+            </div>
+
+            <div className="modal-details">
+              <span className="modal-eyebrow">
+                PROJECT /{" "}
+                {String(selectedProject.id).padStart(2, "0")}
+              </span>
+
+              <h2 id="project-modal-title">
+                {selectedProject.title}
+              </h2>
+
+              <p>{selectedProject.description}</p>
+
+              <div className="modal-actions">
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="modal-primary-button"
+                >
+                  Visit live website
+                  <FiExternalLink />
+                </a>
+
+                <button
+                  type="button"
+                  className="modal-secondary-button"
+                  onClick={() => setSelectedProject(null)}
+                >
+                  Back to projects
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

@@ -1,0 +1,2 @@
+export const GOOGLE_SHEETS_ENDPOINT =
+  process.env.REACT_APP_GOOGLE_SHEETS_ENDPOINT;

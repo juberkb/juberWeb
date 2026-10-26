@@ -1,114 +1,108 @@
-/* #header{
- background-color:rgb(12, 12, 12);
-}
-
-#header #navbarNav  .navbar-nav:hover{
-       color: #d3531a;
-}
-#header .NavLogo img{
-height:50px ;
-width: 100px;
-}
-
-#header  .row {
-  background-color: none;
-}
-#header  .row  .nav-link{
-  color: white;
- font-size: 1rem;
- width: 5rem; 
-} */
-/* #header  .row  .nav-link:hover{
-     font-size: 1rem;
-
-color: darkgrey;
-}
 .navbar-toggler {
-    width: 20px;
-    height: 20px;
-    position: relative;
-    transition: .5s ease-in-out;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
-
-.navbar-toggler,
-.navbar-toggler:focus,
-.navbar-toggler:active,
-.navbar-toggler-icon:focus {
-    outline: none;
-    box-shadow: none;
-    border: 0;
-    position: relative;
+.navbar{
+     background-color:rgb(12, 12, 12);
+     cursor: pointer;
 }
-
+.NavLogo img{
+height:80px ;
+width: 200px;
+}
 .navbar-toggler span {
-    margin: 0;
-    padding: 0;
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #000; /* Black color */
+  transition: transform 0.3s ease;
 }
 
-.toggler-icon {
-    display: block;
-    position: absolute;
+.navbar-toggler.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.collapse {
+  position:absolute;
+  top: 0rem;
+  right: 0;
+  bottom: 0;
+  width: 50%; /* Adjust as needed */
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  /* height: 10vh; */
+  overflow-y: auto;
+  padding-top: 50px; /* Adjust as needed */
+  background-color: #000; /* Black color */
+
+  /* margin-left: 1rem; */
+}
+.collapse .navbar-nav .nav-link {
+margin-left: 1.2rem;
+  color: #d3d3d3; /* White color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+font-size: 1.5rem;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler span{
+     display: block;
+    width: 30px;
     height: 3px;
-    width: 100%;
-    background: #d3531a;
-    border-radius: 1px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
+    margin-bottom: 5px;
+    position: relative;
+    background: #ffffff;
+    transition: transform 0.3s ease;
 }
-
-.middle-bar {
-    margin-top: 0px;
-} */
-
-
-/* State when the navbar is collapsed */
-/* 
-.navbar-toggler.collapsed .top-bar {
-    position: absolute;
-    top: 0px;
-    transform: rotate(0deg);
+.collapse .navbar-nav .nav-link:hover {
+  color: #fff; /* White color on hover */
 }
-
-.navbar-toggler.collapsed .middle-bar {
-    opacity: 1;
-    position: absolute;
-    top: 10px;
-    filter: alpha(opacity=100);
+@media (min-width: 992px) {
+  .collapse {
+     background-color:rgb(12, 12, 12);
+      height: 7vh;
+     width: 50%; /* Adjust as needed */
+    position: relative;
+    width: auto;
+   
+    overflow-y: visible;
+    padding-top: 0;
+ justify-content: flex-end;
+  }
 }
-
-.navbar-toggler.collapsed .bottom-bar {
-    position: absolute;
-    top: 20px;
-    transform: rotate(0deg);
-} */
-
-/* when navigation is clicked */
-
-/* .navbar-toggler .top-bar {
-    top: inherit;
-    transform: rotate(135deg);
+   @media (max-width: 768px) {
+      .collapse {
+ background: rgba( 0, 0, 0, 0.8 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 0.5px );
+-webkit-backdrop-filter: blur( 0.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+          top: 5rem;
+          width: 60%;
+      height: 50vh;
+      margin-right: 2rem;
+  }
+  .collapse .navbar-nav .nav-item {
+    font-weight: 900;
+margin-left: 1rem;
+  color: #ffffff; 
+    transition: color 0.3s ease;
+font-size: 2rem;
 }
-
-.navbar-toggler .middle-bar {
-    opacity: 0;
-    top: inherit;
-    filter: alpha(opacity=0);
-}
-
-.navbar-toggler .bottom-bar {
-    top: inherit;
-    transform: rotate(-135deg);
-} */
-
-/* Color of 3 lines */
-
-/* .navbar-toggler.collapsed .toggler-icon {
-    background: linear-gradient( 263deg, rgba(252,74,74,1) 0%, rgba(0,212,255,1) 100% );
-}
-#navbarNav{
-    margin-left: 12rem;
-    background: none;
-} */
-/* Navbar css */
+ .collapse .navbar-nav .nav-item .navButton{
+  font-size: 2rem;
+ }
+   }

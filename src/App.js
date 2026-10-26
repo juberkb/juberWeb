@@ -1,10 +1,10 @@
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 
 import Home from "./screens/Home";
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer/Footer";
-
-import "./app.css"
 import About from "./screens/HomeComponents/About";
 import MyServices from "./screens/HomeComponents/MyServices";
 import MySkills from "./screens/HomeComponents/MySkills";
@@ -13,35 +13,29 @@ import MyBlogs from "./screens/HomeComponents/MyBlogs";
 import GotoTop from "./screens/HomeComponents/GotoTop";
 import BlogPost from "./screens/HomeComponents/BlogPost";
 
+import "./app.css";
+
 function App() {
+  return (
+    <ChakraProvider value={defaultSystem}>
+      <Router>
+        <Navbar />
 
-  return ( 
-  
-        <Router>
-   
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<MySkills />} />
+          <Route path="/services" element={<MyServices />} />
+          <Route path="/projects" element={<MyProjects />} />
+          <Route path="/myblogs" element={<MyBlogs />} />
+          <Route path="/myblogs/:id" element={<BlogPost />} />
+        </Routes>
 
-            <Navbar />
-        
-            <Routes>
-        
-          <Route path="/" element={<Home />} ></Route> 
-                <Route path="/about" element={<About />}></Route>
-                <Route path="/skills" element={<MySkills />} ></Route>
-                <Route path="/services" element={<MyServices />} ></Route>
-                <Route path="/projects" element={<MyProjects />} ></Route>
-                 <Route path="/myblogs" element={<MyBlogs />} ></Route>
-                  <Route path="/myblogs/:id" element={<BlogPost />} />
-                {/* Add more routes for other sections */}
-                
-            </Routes>
-              <GotoTop/> 
-         <Footer/> 
-        </Router>
-
-    );
-};
-
-
-
+        <GotoTop />
+        <Footer />
+      </Router>
+    </ChakraProvider>
+  );
+}
 
 export default App;
